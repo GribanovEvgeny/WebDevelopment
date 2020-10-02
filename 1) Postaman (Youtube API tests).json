@@ -1,1 +1,70 @@
 
+{
+	"info": {
+		"_postman_id": "2adb0ac5-3ae7-42c3-a33c-5c291c5372e5",
+		"name": "Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Youtube API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b9cef03e-4313-487b-83f3-01a0aaf83363",
+						"exec": [
+							"pm.test(\"Catamaranov really went for mushrooms\", function() {\r",
+							"    const jsonData = JSON.parse(responseBody); \r",
+							"    pm.expect(jsonData.items[0].snippet.title).to.eql(\"КАТАМАРАНОВ УШЕЛ ЗА ГРИБАМИ\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"The header has a stuffy nose\", function() {\r",
+							"   pm.expect(pm.response.headers.get(\"X-Content-Type-Options\")).to.eql(\"nosniff\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"The best fastest response\", function() {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.googleapis.com/youtube/v3/videos?id=brveQGvr7Ro&key=AIzaSyBDhkKsKaRlgVCHKzysONX_5mxleQxOZcs&part=snippet",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"youtube",
+						"v3",
+						"videos"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "brveQGvr7Ro"
+						},
+						{
+							"key": "key",
+							"value": "AIzaSyBDhkKsKaRlgVCHKzysONX_5mxleQxOZcs"
+						},
+						{
+							"key": "part",
+							"value": "snippet"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
