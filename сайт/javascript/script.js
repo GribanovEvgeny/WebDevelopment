@@ -2,6 +2,7 @@ let products;   // список продуктов в нужном порядк�
 LoadPage();     // загружаем данные на страницу
 document.querySelector('#comboSort').addEventListener("change", ProductsSort);      // добавить событие сортировки
 document.querySelector('#comboFilter').addEventListener("change", ProductsFilter);  // добавить событие фильтрации
+
 for (i in document.querySelectorAll('.inputCountry'))
     document.querySelectorAll('.inputCountry')[i].onclick = SetCountry; // добавить событие установки страны
 document.querySelector('.popup_close').onclick = ClosePopup;
@@ -16,6 +17,11 @@ async function LoadPage() { // загрузка JSON
         document.querySelector('#popupCountry').classList.remove("hidden"); // если нет, то показываем попап
     else
         document.querySelector('.popup_open').innerHTML = document.cookie.valueOf('country').replace('country=', '');   // иначе подгружаем город для вывода на страницу
+
+    if (sessionStorage.getItem("countInBasket") != null) {  // если страницу перезагружают, то проверяем, есть ли сессия
+        document.querySelector('#basketCount p').innerHTML = sessionStorage.getItem("countInBasket");   // загружаем данные на страницу
+        document.querySelector('#basketCount').classList.remove("hidden");  // показываем счетчик товаров
+    }
 }
 
 function UpdateProducts() { // обновление списка товаров
@@ -31,9 +37,11 @@ function UpdateProducts() { // обновление списка товаров
         <h5>${products[i].name}</h5>
         <p>${products[i].description}
         </p>
-        <a href="#">${products[i].price} руб</a>
+        <a href="#" class="buttonBuy">${products[i].price} руб</a>
         </li>`;
     }
+    for (i in document.querySelectorAll('.buttonBuy'))
+        document.querySelectorAll('.buttonBuy')[i].onclick = AddProduct; // добавить событие добавления в корзину
 }
 
 function ProductsSort() {   // сортировка
@@ -70,6 +78,8 @@ function ProductsFilter() { // фильтрация
     UpdateProducts();
 }
 
+//--------------------------------3лаба-----------------------------------
+
 function SetCountry() { // занести выбранную страну в куки
     document.cookie = `country=${this.getAttribute('data-country')}`;   // заносим значение в куки
     document.querySelector('.popup_open').innerHTML = this.getAttribute('data-country');    // меняем город на странице
@@ -86,4 +96,20 @@ function ClosePopup() { // закрыть попап
 
 function OpenPopup() {  // открыть попап
     document.querySelector('#popupCountry').classList.remove("hidden");
+}
+
+//--------------------------------4лаба-----------------------------------
+
+function AddProduct() { // добавление продукта в корзину
+    if (sessionStorage.getItem("countInBasket") == null) {
+        sessionStorage.setItem("countInBasket", 1)
+        document.querySelector('#basketCount p').innerHTML = 1;
+        document.querySelector('#basketCount').classList.remove("hidden");
+    }
+    else {
+        let num = +sessionStorage.getItem("countInBasket") + 1;
+        sessionStorage.setItem("countInBasket", num)
+        document.querySelector('#basketCount p').innerHTML = num;
+        document.querySelector('#basketCount').classList.remove("hidden");
+    }
 }

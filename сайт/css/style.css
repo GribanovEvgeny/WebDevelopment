@@ -33,6 +33,32 @@ nav #country{
     text-decoration: underline;
 }
 
+#basket{
+    position: relative;
+    display: block;
+}
+
+#basket div{
+    position: absolute;
+    font-size: 12px;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    color: white;
+    border-radius: 50%;
+    top: -5px;
+    right: -10px;
+    align-items: center;
+    padding: 0px;
+}
+
+#basket div p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
 .blockHeading{
     display: flex;
     position: relative;
