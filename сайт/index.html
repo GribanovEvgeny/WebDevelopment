@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div>
+        <div class="container">
+            <nav>
+                <div class="nav_left">
+                    <a id="logo" href="#">МойРынок</a>
+                    <a id="country" class="popup_open" href="#"></a>
+                    <!--<select id="comboCountry">
+                        <option value="moskow">Москва</option>
+                        <option value="perm">Пермь</option>
+                        <option value="ekaterinburg">Екатеринбург</option>
+                    </select>-->
+                </div>
+                <div class="nav_right">
+                    <a href="#">
+                        <img src="data:image/png;base64,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"
+                            alt="basket" width=30px>
+                    </a>
+                </div>
+            </nav>
+            <div class="blockHeading">
+                <h1>Товары</h1>
+                <div class="comboboxes">
+                    <select id="comboSort">
+                        <option value="upPrice">По возрастанию цены</option>
+                        <option value="downPrice">По убыванию цены</option>
+                    </select>
+                    <select id="comboFilter">
+                        <option value="all">Все</option>
+                        <option value="green">Зеленые</option>
+                        <option value="red">Красные</option>
+                        <option value="yellow">Желтые</option>
+                    </select>
+                </div>
+            </div>
+            <section>
+                <ul>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div id="popupCountry" class="popup hidden">
+        <div class="popup_body">
+            <div class="popup_content">
+                <a href="#" class="popup_close">X</a>
+                <div class="popup_title">Выберите город</div>
+                <ul>
+                    <li><a href=# class="inputCountry" data-country="Москва">Москва</a></li>
+                    <li><a href=# class="inputCountry" data-country="Пермь">Пермь</a></li>
+                    <li><a href=# class="inputCountry" data-country="Екатеринбург">Екатеринбург</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="javascript/script.js"></script>
+</body>
+
+</html>

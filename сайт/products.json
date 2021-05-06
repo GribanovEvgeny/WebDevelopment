@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Огурец",
+        "description": "Однолетнее травянистое растение,вид рода Огурец семейства Тыквенные,овощная культура.",
+        "imageSrc": "img/cucumber.jpg",
+        "imageAlt": "cucumber",
+        "price": 60,
+        "classes": [
+            "green"
+        ]
+    },
+    {
+        "name": "Помидор",
+        "description": "Однолетнее или многолетнее травянистое растение,вид рода Паслён семейства Паслёновые.",
+        "imageSrc": "img/tomato.jpg",
+        "imageAlt": "tomato",
+        "price": 10,
+        "classes": [
+            "red"
+        ]
+    },
+    {
+        "name": "Перец",
+        "description": "Популярная овощная культура с насыщенным своеобразным вкусом и приятным ароматом.",
+        "imageSrc": "img/pepper.jpg",
+        "imageAlt": "pepper",
+        "price": 50,
+        "classes": [
+            "yellow"
+        ]
+    },
+    {
+        "name": "Морковь",
+        "description": "Двулетнее растение,овощная культура,подвид вида морковь дикая.",
+        "imageSrc": "img/carrot.jpg",
+        "imageAlt": "carrot",
+        "price": 20,
+        "classes": [
+            "red"
+        ]
+    },
+    {
+        "name": "Кукуруза",
+        "description": "Однолетнее травянистое культурное растение,единственный культурный представитель родаКукуруза семейства Злаки.",
+        "imageSrc": "img/corn.jpg",
+        "imageAlt": "corn",
+        "price": 40,
+        "classes": [
+            "yellow"
+        ]
+    },
+    {
+        "name": "Укроп",
+        "description": "Монотипный род короткоживущих однолетних травянистых растений семейства Зонтичные.",
+        "imageSrc": "img/dill.jpg",
+        "imageAlt": "dill",
+        "price": 30,
+        "classes": [
+            "green"
+        ]
+    }
+]
