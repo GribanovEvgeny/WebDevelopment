@@ -18,14 +18,18 @@ async function LoadPage() { // загрузка JSON
     else
         document.querySelector('.popup_open').innerHTML = document.cookie.valueOf('country').replace('country=', '');   // иначе подгружаем город для вывода на страницу
 
-    if (sessionStorage.getItem("countInBasket") != null) {  // если страницу перезагружают, то проверяем, есть ли сессия
-        document.querySelector('#basketCount p').innerHTML = sessionStorage.getItem("countInBasket");   // загружаем данные на страницу
+    if (sessionStorage.getItem("productsInBasket") != null) {  // если страницу перезагружают, то проверяем, есть ли сессия
+        let prod = JSON.parse(sessionStorage.getItem("productsInBasket"));
+        let count_prod = 0;
+        for (i in prod)
+            count_prod += prod[i].count;
+        document.querySelector('#basketCount p').innerHTML = count_prod;   // загружаем данные на страницу
         document.querySelector('#basketCount').classList.remove("hidden");  // показываем счетчик товаров
     }
 }
 
 function UpdateProducts() { // обновление списка товаров
-    let list = document.querySelector('section ul');
+    let list = document.querySelector('#inShop');
     list.innerHTML = '';    // очищаем список на сайте
     for (i in products) {
         let classesProd = products[i].classes[0];   // собираем классы в строку через пробел
@@ -37,7 +41,7 @@ function UpdateProducts() { // обновление списка товаров
         <h5>${products[i].name}</h5>
         <p>${products[i].description}
         </p>
-        <a href="#" class="buttonBuy">${products[i].price} руб</a>
+        <p class="buttonBuy">${products[i].price} руб</p>
         </li>`;
     }
     for (i in document.querySelectorAll('.buttonBuy'))
@@ -101,15 +105,37 @@ function OpenPopup() {  // открыть попап
 //--------------------------------4лаба-----------------------------------
 
 function AddProduct() { // добавление продукта в корзину
-    if (sessionStorage.getItem("countInBasket") == null) {
-        sessionStorage.setItem("countInBasket", 1)
+    if (sessionStorage.getItem("productsInBasket") == null) {
+        let prod = [
+            {
+                name: this.parentElement.children[1].innerText,
+                price: this.parentElement.getAttribute('data-price'),
+                count: 1
+            }
+        ]
+        sessionStorage.setItem("productsInBasket", JSON.stringify(prod))
         document.querySelector('#basketCount p').innerHTML = 1;
         document.querySelector('#basketCount').classList.remove("hidden");
     }
     else {
-        let num = +sessionStorage.getItem("countInBasket") + 1;
-        sessionStorage.setItem("countInBasket", num)
-        document.querySelector('#basketCount p').innerHTML = num;
+        let prod = JSON.parse(sessionStorage.getItem("productsInBasket"));
+        let not_found = true;
+        for (let i = 0; i < prod.length && not_found; i++)
+            if (prod[i].name == this.parentElement.children[1].innerText) {
+                prod[i].count += 1;
+                not_found = false;
+            }
+        if (not_found)
+            prod.push({
+                name: this.parentElement.children[1].innerText,
+                price: this.parentElement.getAttribute('data-price'),
+                count: 1
+            })
+        sessionStorage.setItem("productsInBasket", JSON.stringify(prod))
+        let count_prod = 0;
+        for (i in prod)
+            count_prod += prod[i].count;
+        document.querySelector('#basketCount p').innerHTML = count_prod;
         document.querySelector('#basketCount').classList.remove("hidden");
     }
 }

@@ -9,6 +9,7 @@
 .container{
     max-width: 1090px;
     margin: 0 auto;
+    text-align: right;
 }
 
 nav{
@@ -74,15 +75,91 @@ nav #country{
 .blockHeading h1{
     margin: 50px 0px 0px 10px;
 }
-section li{
-    float: left;
-    max-width: 300px;
-    min-width: 200px;
-    box-shadow: 0 0 15px 2px rgb(240, 240, 240);
-    margin: 20px 30px;
-    height: 450px;
+
+section{
     position: relative;
 }
+
+section li{
+    float: left;
+    box-shadow: 0 0 15px 2px rgb(240, 240, 240);
+    position: relative;
+}
+
+#inShop li{
+    max-width: 300px;
+    min-width: 200px;
+    height: 450px;
+    margin: 20px 30px;
+    text-align: left;
+}
+
+#inBacket li{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 30px;
+}
+
+#inBacket li .inBacket_name{
+    margin: 35px 40px;
+    font-size: 30px;
+}
+
+#inBacket li .inBacket_price{
+    margin: 20px 40px;
+    font-size: 20px;
+}
+
+#inBacket li .inBacket_rightrow{
+    display: flex;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+#inBacket li .inBacket_rightrow .inBacket_minus{
+    position: absolute;
+    left: 40px;
+    bottom: -5px;
+    font-size: 30px;
+}
+
+#inBacket li .inBacket_rightrow .inBacket_minus:hover{
+    cursor: pointer;
+}
+
+#inBacket li .inBacket_rightrow .inBacket_count{
+    margin: auto;
+}
+
+#inBacket li .inBacket_rightrow .inBacket_plus{
+    position: absolute;
+    right: 40px;
+    bottom: -5px;
+    font-size: 30px;
+}
+
+#inBacket li .inBacket_rightrow .inBacket_plus:hover{
+    cursor: pointer;
+}
+
+section .resultInBacket{
+    display: inline-block;
+}
+
+.container .buttonToPay{
+    background-color: crimson;
+    padding: 20px 40px;
+    border-radius: 50px;
+    color: white;
+    display: inline-block;
+    margin: 10px -20px 100px 0px;
+}
+
+.container .buttonToPay:hover{
+    cursor: pointer;
+}
+
 
 section li img{
     object-fit: contain;
@@ -99,7 +176,7 @@ section li p{
     margin: 10px 30px;
 }
 
-section li a{
+section li .buttonBuy{
     position: absolute;
     display: block;
     padding: 20px 30px;
@@ -108,6 +185,10 @@ section li a{
     border-radius: 40px;
     color: white;
     bottom: 0px;
+}
+
+section li .buttonBuy:hover{
+    cursor: pointer;
 }
 
 .hidden{
@@ -153,3 +234,4 @@ section li a{
     font-size: 40px;
     margin: 0px 40px 25px 0px;
 }
+
