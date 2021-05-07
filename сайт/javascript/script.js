@@ -11,7 +11,7 @@ document.querySelector('.popup_open').onclick = OpenPopup;
 async function LoadPage() { // загрузка JSON
     let response = await fetch('../products.json'); // получаем данные
     products = await response.json();       // преобразуем в JSON
-    ProductsSort(); // сортируем
+    ProductsSort(); // сортируем не на бэкенде
 
     if (document.cookie.match("country") == undefined)  // проверяем, есть ли куки
         document.querySelector('#popupCountry').classList.remove("hidden"); // если нет, то показываем попап

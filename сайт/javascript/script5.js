@@ -63,7 +63,7 @@ function IncreaseCount() {
 }
 
 let db;
-let dbReq = indexedDB.open('db', 2);
+let dbReq = indexedDB.open('db', 1);
 dbReq.onupgradeneeded = (event) => {
     // Зададим переменной db ссылку на базу данных
     db = event.target.result;
